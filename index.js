@@ -41,6 +41,10 @@ Enums.prototype.getByCode = function(code) {
   return this.getBy('code', code);
 };
 
+Enums.prototype.fromString = function(string) {
+  return this.getBy('name', string);
+};
+
 Enums.prototype.getBy = function(name, val) {
   var enums = this.enums;
   for (var i = 0, len = enums.length; i < len; i++) {

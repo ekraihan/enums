@@ -16,8 +16,6 @@ describe('test/enums.test.js', function() {
       message: 'Shop open',
     }]);
     assert(status);
-    console.log(status.CLOSED);
-    console.log(status.OPENED);
     assert(Object.prototype.hasOwnProperty.call(status, 'CLOSED'));
     assert(Object.prototype.hasOwnProperty.call(status, 'OPENED'));
     assert.deepEqual('CLOSED', status.CLOSED.name);
@@ -74,6 +72,27 @@ describe('test/enums.test.js', function() {
     }];
     new Enums(enums);
     new Enums(enums);
+  });
+
+  describe('fromString()', function() {
+
+    it('should return an enum type given a string', function() {
+      let letter = new Enums(['X', 'Y', 'Z']);
+      let xEnum = letter.fromString('X');
+
+      assert.equal(xEnum, letter.X);
+    });
+
+    it('should return an enum type that is not equal to a same-named but different enum value', function() {
+      let letterArray = ['X', 'Y', 'Z'];
+      let letter1 = new Enums(letterArray);
+      let letter2 = new Enums(letterArray);
+      let xEnum1 = letter1.fromString('X');
+      let xEnum2 = letter2.fromString('X');
+
+      assert.notEqual(xEnum1, xEnum2);
+    });
+
   });
 
 });
