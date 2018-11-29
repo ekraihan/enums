@@ -95,4 +95,23 @@ describe('test/enums.test.js', function() {
 
   });
 
+  describe('containsName()', function() {
+
+    it('should return true if the enum contains the given name', function() {
+      let letter = new Enums(['X', 'Y', 'Z']);
+      let containsName = letter.containsName('X');
+
+      assert.ok(containsName);
+    });
+
+    it('should return false if the enum does not contain the given name', function() {
+      let letter = new Enums(['X', 'Y', 'Z']);
+      let containsName = letter.containsName('F');
+
+      assert.ok(!containsName);
+    });
+
+  });
+
+
 });

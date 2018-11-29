@@ -45,6 +45,10 @@ Enums.prototype.fromString = function(string) {
   return this.getBy('name', string);
 };
 
+Enums.prototype.containsName = function(name) {
+  return this.enums.map(enum_ => enum_.name).includes(name)
+};
+
 Enums.prototype.getBy = function(name, val) {
   var enums = this.enums;
   for (var i = 0, len = enums.length; i < len; i++) {
